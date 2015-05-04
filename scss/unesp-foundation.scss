@@ -1,0 +1,228 @@
+@import "settings";
+@import "foundation";
+
+// Or selectively include components
+// @import
+//   "foundation/components/accordion",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/block-grid",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/button-groups",
+//   "foundation/components/buttons",
+//   "foundation/components/clearing",
+//   "foundation/components/dropdown",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/forms",
+//   "foundation/components/grid",
+//   "foundation/components/inline-lists",
+//   "foundation/components/joyride",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/magellan",
+//   "foundation/components/orbit",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/reveal",
+//   "foundation/components/side-nav",
+//   "foundation/components/split-buttons",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switches",
+//   "foundation/components/tables",
+//   "foundation/components/tabs",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/top-bar",
+//   "foundation/components/type",
+//   "foundation/components/offcanvas",
+//   "foundation/components/visibility";
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- STRUCTURE DEFINITIONS ------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+body { background: $darkest-primary-color; }
+
+#main-wrap { background: $white; }
+
+.bottom-space { padding-bottom: 4rem; }
+.wrapper-top-bar { border-bottom: 1px solid #ddd; background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(255,255,255,0.09) 92%, rgba(0,0,0,0.06) 100%); min-height: rem-calc(41); }
+.margin-top { margin-top: 1rem; }
+.margin-top-double { margin-top: 2rem; }
+.no-margin { margin-bottom: 0; }
+
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- CLASSIFICATION DEFINITIONS -------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+.color {
+	&.primary { color: $primary-color; }
+	&.alternate { color: $alternate-color; }
+	&.light { color: $light-color; }
+	&.medium { color: $medium-color; }
+	&.dark { color: $dark-color; }
+	&.warning { color: $warning-color; }
+	&.alert { color: $alert-color; }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- TYPE DEFINITIONS -----------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+h1, h2 { font-weight: $font-weight-thin; }
+h3 { font-weight: $font-weight-light; }
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- HEADER ---------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+#header-first-row {}
+	#system-breadcrumbs { font-size: rem-calc(11); text-transform: uppercase; margin: rem-calc(12) 0;
+		li { display: inline-block; padding: 0 rem-calc(5) 0 0; 
+			&:after { content: '/'; display: inline-block; padding-left: rem-calc(8); color: $medium-color; }
+			&:last-child { 
+				&:after { display: none; }
+				a { color: $dark-color; cursor: default; pointer-events: none; 
+					&:hover { text-decoration: none; }
+				}
+			}
+		}
+		a:hover { text-decoration: underline; }
+	}
+	#main-logo { max-height: rem-calc(30); margin-top: rem-calc(5) }
+	#user-box {
+		ul { list-style: none; margin: 0; display: inline-block; 
+			* { vertical-align: middle; }
+		}
+		li { padding: 0 rem-calc(5); display: inline-block;
+			&.separator-after { border-right: 1px solid rgba(1,1,1,.2); }
+		}
+	}
+		#user-info { padding: rem-calc(3 5); cursor: pointer; margin: rem-calc(-5 0);
+			&:hover { background: rgba(1,1,1,.2); }
+			.pic img { display: inline-block; max-width: rem-calc(20) }
+		}
+		#central-notifications { position: relative;
+			.notification-container { position: absolute; top: -10px; right: -7px; z-index: 10; pointer-events: none; }
+		}
+
+#header-second-row { background: $primary-color; color: $white; box-shadow: rgba(1, 1, 1, 0.2) 0px 1px 3px 0px inset; 
+	i { cursor: pointer; font-size: rem-calc(20); color: rgba(1,1,1,.2); transition: all .15s ease;
+		&:hover { color: rgba(1,1,1,.3); }
+		&.active { color: $white; }
+	}
+	.icon-box { margin-top: rem-calc(15); }
+}
+	#system-name { font-size: rem-calc(23); line-height: rem-calc(23); margin: rem-calc(14) 0; }
+	#system-description { margin: rem-calc(-10) 0 rem-calc(14) 0; line-height: rem-calc(16); color: rgba(255,255,255,.7); }
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- FOOTER ---------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+#main-footer { min-height: rem-calc(100); }
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- FOUNDATION OVERRIDES & ADDONS ----------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+//block grid
+[class*="block-grid-"] {
+	&.packed { padding: 0 7px;
+		> li { padding: rem-calc(0 3 6 3); }
+	}
+}
+
+//dropdowns
+ul.f-dropdown {
+	&:not(.open) { display: none; } //correção de bug dos dropdowns fazendo peso no footer
+	li { 
+		a { transition: color .15s ease;
+			&:hover { color: $dark-color; }
+		}
+	}
+}
+
+//topbar
+.top-bar-section {
+	li { transition: border-color .15s ease; position: relative; }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- NOTIFICATIONS --------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+.notification-bubble { border-radius: 1000px; background: #ccc; display: inline-block; padding: rem-calc(5); line-height: rem-calc(14); min-width: rem-calc(24); text-align: center; margin-left: rem-calc(5); color: $white;
+	&.alert { background: $alert-color; }
+	&.warning { background: $warning-color; }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- OUTRO... -------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+#media-query-indicator { position: fixed; bottom: 10px; right: 10px; font-size: 30px; font-weight: $font-weight-bold; }
+
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --- MEDIA QUERIES --------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
+
+@media #{$small-only} {
+
+	//topbar
+	.wrapper-top-bar > .row > .columns { padding: rem-calc(0 5); }
+
+}
+
+@media #{$medium-up} {
+
+	//notifications
+	.notification-bubble { margin-left: rem-calc(1); font-size: rem-calc(10); line-height: rem-calc(15); padding: 0 rem-calc(5); height: auto; min-width: rem-calc(15); }
+
+	//topbar
+	.top-bar-section {
+		> ul > li.has-dropdown > a { padding-right: rem-calc(12) !important; 
+			&:after { display: none !important; }
+		}
+		.dropdown { box-shadow: 0px 1px 3px rgba(1,1,1,0.2); }
+		.has-dropdown {
+			li { border: 0; }
+		}
+		li { border-bottom: $top-bar-border-width solid transparent; border-top: $top-bar-border-width solid transparent;
+			&:not(.has-form):hover { border-bottom-color: #bbb; }
+			&.active, &.active:hover { border-bottom-color: $primary-color; }
+			.notification-container { position: absolute; top: -12px; right: 0; }
+		}
+	}
+
+	//type
+	h1 { letter-spacing: -2px; }
+	h2 { letter-spacing: -1px; }
+	h2, h3 { font-weight: $font-weight-thin; }
+
+}
+
+@media #{$large-up} {
+	#main-logo { position: relative; right: -17px; }
+}

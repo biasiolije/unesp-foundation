@@ -1,0 +1,14 @@
+{
+  "name": "unesp-foundation-app",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/damiansb/unesp-foundation-app"
+  },
+  "devDependencies": {
+    "node-sass": "~2.0.1",
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-sass": "~0.18.0"
+  }
+}

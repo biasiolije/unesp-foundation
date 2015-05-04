@@ -1,0 +1,27 @@
+{
+  "name": "unesp-foundation-app",
+  "version": "0.0.1",
+  "authors": [
+    "Jose Eduardo Biasioli <biasiolije@gmail.com>"
+  ],
+  "description": "Front-end modelo para aplicativos da UNESP, baseado em Zurb Foundation",
+  "main": "index.html",
+  "keywords": [
+    "unesp",
+    "foundation",
+    "app"
+  ],
+  "license": "MIT",
+  "homepage": "https://www.fcfar.unesp.br/foundation-app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "zurb/bower-foundation",
+    "font-awesome": "~4.3.0"
+  }
+}
