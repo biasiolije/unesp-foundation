@@ -20,6 +20,7 @@ after_success:
   - rm -rf bower-unesp-foundation/*
   - cd bower-unesp-foundation
   - touch deu_certo.txt
+  - date > deu_certo.txt
   - git remote rm origin
   - git remote add origin https://biasiolije:${GH_TOKEN}@github.com/biasiolije/bower-unesp-foundation.git
   - git add -A
