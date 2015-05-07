@@ -14,7 +14,7 @@ before_script:
   - git config --global user.email "biasiolije@gmail.com"
   - git config --global user.name "biasiolije"
   - bower install
-script: ./run-tests.sh
+script: sh run-tests.sh
 after_success:
   - git clone https://www.github.com/biasiolije/bower-unesp-foundation.git
   - rm -rf bower-unesp-foundation/*
