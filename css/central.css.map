@@ -1,0 +1,12 @@
+{
+	"version": 3,
+	"file": "central.css",
+	"sources": [
+		"../central.scss",
+		"../_settings.scss",
+		"../../bower_components/foundation/scss/foundation/_functions.scss"
+	],
+	"sourcesContent": [],
+	"mappings": "AAIA,AAAc,qBAAO,MAAX,iBAAkB,oBAC5B,AAAc,qBAAO,AAAK,YAAb,QAAS,IACtB,AAAc,qBAAO,MAAM,OAAf,KAAM,KAClB,AAAc,qBAAO,MAAM,AAAM,aAAnB,QAAS,OACvB,AAAc,qBAAO,MAAM,AAAM,aAAnB,QAAS,MAEvB,AAAc,qBAAO,MAAM,aAAT,MCmHJ,KDnHwB,WAAY,OAAS,MAAO,KAAM,MAAO,EAAI,OAAQ,KAAO,IAAK,kBAGvG,eAAe,MAAN,QAAS,MAAQ,MAAO,KAAM,YAAa,KAAM,SAAU,SAAW,WCsH9D,QDtH0F,WAAY,eACvH,eAAe,AAAK,YAAR,QAAS,IACrB,eAAe,MAAM,OAAV,SAAU,SAAW,IAAK,gBAAc,KAAM,gBAAc,MAAO,IAAK,OAAQ,IAAK,gBAAiB,MAAQ,oBAAqB,eAC9I,eAAe,MAAM,AAAM,aAAd,QAAS,MAEtB,eAAe,MAAM,aAAJ,SAAU,SAAW,OAAQ,OAAa,MAAO,gBAAc,MAAO,KAAO,WAAY,MAAQ,YAAa,IAAM,MCqFrH",
+	"names": []
+}

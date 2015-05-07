@@ -23,5 +23,8 @@
   "dependencies": {
     "foundation": "zurb/bower-foundation",
     "font-awesome": "~4.3.0"
+  },
+  "devDependencies": {
+    "highlightjs": "~8.5.0"
   }
 }

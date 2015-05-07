@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Páginas da documentacal
+    RewriteRule ^docs/componentes/(.+)\.html?$ docs-componentes-$1.php [NC,L]
+    RewriteRule ^docs/(.+)\.html?$ docs-$1.php [NC,L]
+    RewriteRule ^docs/?$ docs-introducao.php [NC,L]
+
+</IfModule>
