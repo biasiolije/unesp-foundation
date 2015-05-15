@@ -57,7 +57,26 @@ body { background: #eee; }
 }
 
 //spacing
-.wrapper-top-bar { border-bottom: 1px solid #ddd; background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(255,255,255,0.09) 92%, rgba(0,0,0,0.06) 100%); min-height: rem-calc(41); }
+.wrapper-top-bar { border-bottom: 1px solid #ddd; background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(255,255,255,0.09) 92%, rgba(0,0,0,0.06) 100%); background-color: white; min-height: rem-calc(41); 
+	&.dark { background-image: none; background-color: $oil; border-bottom: 1px solid #000;
+		li { border-color: transparent !important; color: #ddd !important;
+			&:hover { background: $dark-color; }
+			&.active { border-color: $primary-color !important; background: $primary-color;
+				a { background: $primary-color !important; }
+			}
+			a { color: #ddd !important; }
+			.dropdown {
+				li {
+					&:hover { 
+						a { background: $dark-color !important; }
+					}
+					a { background-color: $oil !important; }
+					label { background: $oil; }
+				}
+			}
+		}
+	}
+}
 
 .margin-top { margin-top: rem-calc(20); }
 .margin-top-double { margin-top: rem-calc(40); }
@@ -340,9 +359,26 @@ table { width: 100%; border-spacing: 0;
 	.button { margin-bottom: 0; }
 }
 
+//off-canvas
+ul.off-canvas-list li a:hover { background: $dark-color; }
+
+.tab-bar { border-bottom: 1px solid #ddd; background-image: linear-gradient(rgba(0,0,0,0) 0%, rgba(255,255,255,0) 85%, rgba(255,255,255,.09) 86%, rgba(0,0,0,.06) 100%); 
+	h1 { letter-spacing: 0; }
+}
+
 //topbar
+.top-bar {
+	.title-area {
+		h1 { letter-spacing: 0; 
+			a { font-weight: $font-weight-bold; }
+		}
+	}
+}
 .top-bar-section {
 	li { transition: border-color .15s ease; position: relative; }
+	.has-dropdown {
+		li.active:hover { background: white; }
+	}
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -379,7 +415,7 @@ table { width: 100%; border-spacing: 0;
 	table {
 		&.responsive {
 			&.list {
-				tr:hover {
+				tr:hover {7
 					td { border-color: transparent; border-bottom-color: $table-border-color; }
 				}
 			}
@@ -535,3 +571,7 @@ table { width: 100%; border-spacing: 0;
 .uf-addon, .unesp-tag {
 	&:after { content: ''; background: url(../images/unesp-glyph-color.svg); width: .8em; height: .8em; background-size: cover; display: inline-block; position: relative; top: -.35em; }
 }
+
+.main-section { padding: 0 rem-calc(20); background: #fafafa; }
+
+.doc-oc-list { background: $oil; }

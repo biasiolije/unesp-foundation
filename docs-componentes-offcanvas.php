@@ -7,302 +7,677 @@
 		<div class="large-9 columns margin-top-double padding-bottom-quad documentacao">
 
 			<h1>Off-canvas</h1>
-			<h3 class="subheader">O Foundation inclui um punhado de utilitários JavaScript para ajudá-lo a adiconar funcionalidades aos apps e plugins.</h3>
+
+			<h3 class="subheader">Os menus off-canvas são posicionados fora da viewport e deslizam para dentro quando ativados. Configurar um layout com off-canvas no Foundation é super fácil.</h3>
 
 			<hr class="large">
+			<div class="off-canvas-wrap docs-wrap" data-offcanvas>
+				<div class="inner-wrap">
+					<nav class="tab-bar">
+						<section class="left-small">
+							<a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+						</section>
 
-			<h3 class="normal" id="using">Utilizando os utilitários JavaScript</h3>
+						<section class="right tab-bar-section">
+							<h1 class="text-left">Foundation</h1>
+						</section>
+					</nav>
 
-			<p>Há duas formas de utilizar os utilitários do Foundation: chamando-os de dentro do namespace Foundation.utils ou herdando-os dentro de um objeto.</p>
+					<aside class="left-off-canvas-menu">
+						<ul class="off-canvas-list">
+							<li><label>Foundation</label></li>
+							<li><a href="#">The Psychohistorians</a></li>
+							<li><a href="#">The Encyclopedists</a></li>
+							<li><a href="#">The Mayors</a></li>
+							<li><a href="#">The Traders</a></li>
+							<li><label>Foundation and Empire</label></li>
+							<li><a href="#">The General</a></li>
+							<li><a href="#">The Mule</a></li>
+						</ul>
+					</aside>
 
-			<h4>Foundation.utils</h4>
+					<section class="main-section">
+						<div class="row">
+							<div class="large-12 columns">
+								<br/>
+								<h4>The Psychohistorians</h4>
+								<p>Set in the year 0 F.E. (&quot;Foundation Era&quot;), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p>
 
-			<p>Desde que o arquivo <kbd>foundation.js</kbd> tenha sido carregado na página, você pode acessar qualquer dos utilitários do Foundation chamando <code>Foundation.utils.{function_name}</code>.</p>
+								<p>Using psychohistory, Seldon has discovered the declining nature of the Empire, angering the aristocratic members of the Committee of Public Safety, the de facto rulers of the Empire. The Committee considers Seldon&#39;s views and statements treasonous, and he is arrested along with young mathematician Gaal Dornick, who has arrived on Trantor to meet Seldon. Seldon is tried by the Committee and defends his beliefs, explaining his theories and predictions, including his belief that the Empire will collapse in 500 years and enter a 30,000-year dark age, to the Committee&#39;s members. </p>
 
-			<p>Por exemplo, se você digitar o seguinte no consolde JavasScript, ele irá retornar uma string alfabética de 6 digitos.</p>
+							</div>
+						</div>
+					</section>
 
-			<pre class="margin-bottom"><code class="language-javascript">// Cria uma string randômica de tamanho n
-Foundation.utils.random_str(6);</code></pre>
+				<a class="exit-off-canvas"></a>
 
-			<h4>Herança de métodos</h4>
-
-			<p>Se você tem um objeto JavaScrpt, você pode herdar qualquer um dos utilitários chamando o método <code>Foundation.inherit</code>. Para utilizá-lo, passe o objeto que você quer que herde os métodos, seguido de uma string com os métodos que você deseja, separados por espaço.</p>
-
-			<pre class="margin-bottom"><code class="language-javascript">// Exemplo simples
-var user = {};
-Foundation.inherit(user, 'random_str data_options');
-
-// Exemplo avançado
-Pessoa = function() {
-  this.init = function() {
-    Foundation.inherit(this, 'random_str data_options');
-  }
-};
-
-var user = new Pessoa();
-user.init();</code></pre>
-
-			<hr class="large">
-
-			<h3 class="normal" id="selector">Engine de seleção</h3>
-
-			<p>Apesar do engine de seleção do jQuery ser bastante versátil, ele pode ser um pouco lento as vezes. O seletor "S" do Foundation utiliza a API nativa do browser chamando o método <code>querySelectorAll()</code>, fazendo a seleção ser até 20% mais rápida.</p>
-
-			<p>"S" pode ser utilizado como um substituto para o seletor $ do jQuery na maioria dos casos.</p>
-
-			<div class="row">
-				<div class="large-6 columns">
-				<h4>Seletor do jQuery</h4>
-					<pre class="margin-bottom"><code class="language-javascript">// Uma seleção simples
-$('.class #id');
-
-// Uma seleção com colchetes
-$('label[for="input1"]');
-
-// Uma seleção com escopo
-$('dd > .content', '#accordion');</code></pre>
-				</div>
-				<div class="large-6 columns">
-				<h4>Seletor &#8220;S&#8221; do Foundation</h4>
-					<pre class="margin-bottom"><code class="language-javascript">// Uma seleção simples
-Foundation.utils.S('.class #id');
-
-// Uma seleção com colchetes
-Foundation.utils.S('label[for="input1"]');
-
-// Uma seleção com escopo
-Foundation.utils.S('dd > .content', '#accordion');</code></pre>
 				</div>
 			</div>
 
-			<p><h4>Assinatura do método</h4></p>
-			<pre class="margin-bottom"><code class="language-javascript">// Argumentos:
-//    Seletor (String): Seletor CSS descrevendo o(s) elemento(s) a serem retornados
-//    como um objeto jQuery.
-//
-//    Escopo (String): Seletor CSS descrevendo a área a ser procurada. O padrão é o
-//    documento.
-//
-// Retorna:
-//    Element (jQuery Object): Objeco jQuery contendo os elemtos referentes ao
-//    seletor dentro do escopo.
-
-S(seletor, escopo) { ... }</code></pre>
-
 			<hr class="large">
-			<h3 class="normal" id="delay">Throttle &amp; Debounce</h3>
 
-			<p>Muitas vezes quando você cria um callback é vangajoso adicionar um delay para que o ele não seja ativado multiplas vezes. O Foundation inclui dois dipos de delays para callbacks: <code>throttle</code> e <code>debounce</code>.</p>
-			<p><strong>Throttle</strong> previne a função de ser executada mais de 1 vez a cada n milisegundos. Este recurso é geralmente utilizado em casos em que não é adequado chamar um callback a cada vez que um evento é disparado (durante uma ação contínua), mas você ainda quer disparar uma ação enquanto o evento é executado. Um exemplo disso seria a janela do navegador sendo redimensionada ou um animação ocorrendo.</p>
-			<p><strong>Debounce</strong> previne a função de ser executada até que pare de ser invocada por n milisegundos. Este recurso é geralmente utilizado para impedir uma ação de ser realizada duas vezes, como clicar duas vezes em um botão de submit, ou impedir um evento de acontecer acidentalmente, como um evento acionado por um hover.</p>
+			<h2 class="normal" id="basic">Básico</h2>
 
-			<div class="row">
-				<div class="large-6 columns">
-				<h4>Sem delay</h4>
-					<pre class="margin-bottom"><code class="language-javascript">// Handler de click em um botão
-$('.button').on('click', function(e){
-  // Tratamento do click
-});
+			<p>Você pode criar um off-canvas básico, <strong>sem estilos</strong>, com apenas um pouco de markup. Veja como:</p>
 
-// Redimensionamento
-$(window).on('resize', function(e){
-  // Ações responsivas
-});</code></pre>
-				</div>
-				<div class="large-6 columns">
-				<h4>Com delay</h4>
-					<pre class="margin-bottom"><code class="language-javascript">// Handler de click em botão com debounce
-$('.button').on('click', Foundation.utils.debounce(function(e){
-  // Tratamento do click
-}, 300, true));
-
-// Redimensionamento com throttle
-$(window).on('resize', Foundation.utils.throttle(function(e){
-  // Ações responsivas
-}, 300));</code></pre>
-				</div>
-			</div>
-
-			<p><h4>Assinatura do método</h4></p>
-			<pre class="margin-bottom"><code class="language-javascript">// Argumentos:
-//    Func (Function): Função a ser tratada.
-//
-//    Delay (Integer): Intervalo de execução da função em milisegundos.
-//
-// Retorna:
-//    Lazy_function (Function): Função com o throttle aplicado.
-
-throttle(func, delay) { ... }
-
-// Arguments:
-//    Func (Function): Função a ser tratada.
-//
-//    Delay (Integer): Intervalo de execução da função em milisegundos.
-//
-//    Immediate (Bool): Se a função deve ser chamada no início do delay
-//    em vez do final. o padrão é false.
-//
-// Returns:
-//    Lazy_function (Function): Função com o debounce aplicado.
-
-debounce(func, delay, immediate) { ... }</code></pre>
-
-
-			<hr class="large">
-			<h3 class="normal" id="data-options">Data Options</h3>
-
-			<p>O método <code>data_options</code> analisa um conjunto de valores delimitados por ponto e vírgula no atributo <code>data-options</code> do elemento HTML selecionado. É util para permitir que configurações sejam passadas para um script ou plugin a partir do markup.</p>
 			<div class="row">
 				<div class="large-6 columns">
 				<h4>HTML</h4>
-					<pre class="margin-bottom"><code class="language-html">&lt;div id="target" data-options="delay:4;color:red;animal:unicorn"&gt;&lt;/div&gt;</code></pre>
+					<pre class="margin-bottom"><code class="language-html">&lt;div class="off-canvas-wrap" data-offcanvas&gt;
+  &lt;div class="inner-wrap"&gt;
+
+    &lt;a class="left-off-canvas-toggle" href="#" &gt;Menu&lt;/a&gt;
+
+    &lt;!-- Menu Off-canvas --&gt;
+    &lt;aside class="left-off-canvas-menu"&gt;
+        &lt;!-- coloque qualquer coisa que quiser no menu off-canvas --&gt;
+        &lt;ul&gt;
+          &lt;li&gt;&lt;a href="#"&gt;Item 1&lt;/a&gt;&lt;/li&gt;
+        ...
+        &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;!-- o conteúdo principal vai aqui --&gt;
+    &lt;p&gt;Set in the year 0 F.E. ("Foundation Era"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.&lt;/p&gt;
+
+    &lt;!-- fecha o menu off-canvas --&gt;
+    &lt;a class="exit-off-canvas"&gt;&lt;/a&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
 				</div>
 				<div class="large-6 columns">
-				<h4>JavaScript</h4>
-					<pre class="margin-bottom"><code class="language-javascript">var settings = Foundation.utils.data_options($('#target'));</code></pre>
+					<h4>HTML renderizado</h4>
+					<div class="off-canvas-wrap docs-wrap" data-offcanvas>
+						<div class="inner-wrap">
+
+							<a class="left-off-canvas-toggle" >Menu</a>
+
+							<!-- Off Canvas Menu -->
+							<aside class="left-off-canvas-menu">
+
+								<ul>
+									<li><a href="#">Item 1</a></li>
+									<li><a href="#">Item 2</a></li>
+									<li><a href="#">Item 3</a></li>
+									<li><a href="#">Item 4</a></li>
+									<li><a href="#">Item 5</a></li>
+									<li><a href="#">Item 6</a></li>
+									<li><a href="#">Item 7</a></li>
+								</ul>
+
+							</aside>
+
+							<p>Set in the year 0 F.E. (&quot;Foundation Era&quot;), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p>
+
+
+							<!-- close the off-canvas menu -->
+							<a class="exit-off-canvas"></a>
+
+						</div>
+					</div>
+
 				</div>
 			</div>
 
-			<h4>Assinatura do método</h4>
+			<p>A base do off-canvas é simples. O layout todo é englobado pelo elemento <code>.off-canvas-wrap</code>. Em seguida vem o <code>.inner-wrap</code>. Você também precisa incluir o menu em si, que é o <code>.left-off-canvas-menu</code> ou <code>.right-off-canvas-menu</code>. Você precisa de um gatilho para abrir o seu menu off-canvas: <code>.left-off-canvas-toggle</code> ou <code>.right-off-canvas-toggle</code>. Finalmente, lembre-se de incluir o <code>.exit-off-canvas</code>, assim os usuários podem voltar à página principal.</p>
 
-			<pre class="margin-bottom"><code class="language-javascript">// Argumentos:
-//    el (jQuery Object): Elemento a ser analisado.
-//    data_attr_name (string): Nome opctional do data-attribute a ser analisado. (padrão 'options').
-//
-// Returns:
-//    Options (JavaScript Object): Conteúdo do atributo data-options do elemento.
+			<h3 class="normal" id="off-canvas-wrap">Off-canvas wrap</h3>
+			<p>Este é o elemento mais externo. Contém todo o layout e escode o overflow.</p>
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;div class="off-canvas-wrap"&gt;&lt;!-- o layout vai todo aqui --&gt;&lt;/div&gt;</code></pre>
 
-data_options(el, data_attr_name) { ... }</code></pre>
+			<h3 class="normal" id="inner-wrap">Inner wrap</h3>
+			<p>Este é o elemento que é animado. Todo o conteúdo da página precisa estar aqui.</p>
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;div class="off-canvas-wrap"&gt;
+  &lt;main class="inner-wrap"&gt;&lt;!-- todo o conteúdo vai aqui --&gt;&lt;/main&gt;
+&lt;/div&gt;</code></pre>
+
+			<h3 class="normal" id="off-canvas-menu">Menu off-canvas</h3>
+			<p>Este é o elemento que desliza para dentro quanto ativado. Você pode colocá-lo do lado direito ou esquerdo, e até mesmo criar dois menus, um de cada lado!</p>
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;nav class="left-off-canvas-menu"&gt;&lt;!-- coloque os seus links aqui --&gt;&lt;/nav&gt;
+&lt;nav class="right-off-canvas-menu"&gt;&lt;!-- coloque mais links aqui --&gt;&lt;/nav&gt;</code></pre>
+
+			<h3 class="normal" id="target-off-canvas-menu">Referenciando o menu off-canvas</h3>
+			<p>Para referenciar um menu off-canvas, adiciona <code>.left-off-canvas-toggle</code> ou <code>.right-off-canvas-menu</code> ao seu layout. Clicando em um destes dois itens irá ativar o menu off-canvas correspondente.</p>
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;!-- referencia o menu-off canvas da esquerda --&gt;
+&lt;a href="#" role="button" class="left-off-canvas-toggle"&gt;Menu da equerda&lt;/a&gt;
+&lt;!-- referencia o menu off-canvas da direita --&gt;
+&lt;a href="#" role="button" class="right-off-canvas-toggle"&gt;Menu da direita&lt;/a&gt;
+
+&lt;nav class="left-off-canvas-menu"&gt;&lt;/nav&gt;
+&lt;nav class="right-off-canvas-menu"&gt;&lt;/nav&gt;</code></pre>
+
+			<h3 class="normal" id="exit-off-canvas-menu">Saindo do menu off-canvas</h3>
+			<p>Inclua o <code>.exit-off-canvas</code> para fornecer uma forma de voltar à página principal. Isto é um overlay que cobre o <code>.inner-wrap</code> quando o off-canvas está ativo. Clicando-se nele, o menu off-canvas será fechado.</p>
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;button class="exit-off-canvas"&gt;&lt;/button&gt;</code></pre>
 
 			<hr class="large">
-
-			<h3 class="normal" id="media-queries">Media Queries</h3>
-
-			<p>Media queries são o coração da grande maioria das técnicas de CSS responsivo, mas podem ser um pouco complicadas de lidar. Para facilitar as coisas, foram incluídos 2 métodos de ajuda (<code>register_media</code> e <code>add_custom_rule</code>). Também foi feito um complemento no método nativo <code>matchMedia</code> para funcionar em todos os browsers que o Foundation suporta.</p>
-
-			<p><strong>Register Media</strong> é usado para adicionar uma nova media query à lista acessível pelo JavaScript. Esta lista pode ser acessada através do <code>Foundation.media_queries</code>.</p>
-
-			<p><strong>Add Custom Rules</strong> é usado para adiconar uma regra CSS customizada ao documento. Se uma media query é passada ao método, a regra será aplicada a esta media query somente, senão, globalmente.</p>
-
-			<p><strong>Match Media</strong> pode ser usada para saber se o browser atualmente corresponde a uma media query passada como string. Para usar esta função, chame <code>matchMedia()</code> com a media query como argumento e verifique a propriedade <code>matches</code> (veja o exemplo abaixo).</p>
 			
-			<p>Em adição a isso, você pode verificar as media queries padrão do Foundation. Os métodos diponíveis são:</p>
+			<h2 class="normal" id="advanced">Avançado</h2>
+			<p>Usando os componentes pré-definidos, você pode criar um belo menu off-canvas direto da fábrica!</p>
+			<div class="row">
+				<div class="large-6 columns">
+				<h4>HTML</h4>
+					<pre class="margin-bottom"><code class="language-html">&lt;div class="off-canvas-wrap" data-offcanvas&gt;
+  &lt;div class="inner-wrap"&gt;
+    &lt;nav class="tab-bar"&gt;
+      &lt;section class="left-small"&gt;
+        &lt;a class="left-off-canvas-toggle menu-icon" href="#"&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+      &lt;/section&gt;
 
-			<pre class="margin-bottom"><code class="language-javascript">// Telas pequenas
-Foundation.utils.is_small_only();
-Foundation.utils.is_small_up();
+      &lt;section class="middle tab-bar-section"&gt;
+        &lt;h1 class="title"&gt;Foundation&lt;/h1&gt;
+      &lt;/section&gt;
 
-// Telas médias
-Foundation.utils.is_medium_only();
-Foundation.utils.is_medium_up();
+      &lt;section class="right-small"&gt;
+        &lt;a class="right-off-canvas-toggle menu-icon" href="#"&gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+      &lt;/section&gt;
+    &lt;/nav&gt;
 
-// Telas grandes
-Foundation.utils.is_large_only();
-Foundation.utils.is_large_up();
+    &lt;aside class="left-off-canvas-menu"&gt;
+      &lt;ul class="off-canvas-list"&gt;
+        &lt;li&gt;&lt;label&gt;Foundation&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;The Psychohistorians&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
 
-// Telas extra-grandes
-Foundation.utils.is_xlarge_only();
-Foundation.utils.is_xlarge_up();
+    &lt;aside class="right-off-canvas-menu"&gt;
+      &lt;ul class="off-canvas-list"&gt;
+        &lt;li&gt;&lt;label&gt;Users&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Hari Seldon&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
 
-// Telas gigantes
-Foundation.utils.is_xxlarge_only();
-Foundation.utils.is_xxlarge_up();</code></pre>
+    &lt;section class="main-section"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/section&gt;
+
+  &lt;a class="exit-off-canvas"&gt;&lt;/a&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>	
+				</div>
+
+				<div class="large-6 columns">
+					<h4>HTML renderizado</h4>
+					<div class="off-canvas-wrap docs-wrap" data-offcanvas>
+					<div class="inner-wrap">
+						<nav class="tab-bar">
+							<section class="left-small">
+								<a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+							</section>
+
+							<section class="middle tab-bar-section">
+								<h1 class="title">Foundation</h1>
+							</section>
+
+							<section class="right-small">
+								<a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+							</section>
+						</nav>
+
+						<aside class="left-off-canvas-menu">
+							<ul class="off-canvas-list">
+								<li><label>Foundation</label></li>
+								<li><a href="#">The Psychohistorians</a></li>
+								<li><a href="#">The Encyclopedists</a></li>
+								<li><a href="#">The Mayors</a></li>
+								<li><a href="#">The Traders</a></li>
+								<li><a href="#">The Merchant Princes</a></li>
+								<li><label>Foundation and Empire</label></li>
+								<li><a href="#">The General</a></li>
+								<li><a href="#">The Mule</a></li>
+								<li><label>Second Foundation</label></li>
+								<li><a href="#">Search by the Mule</a></li>
+								<li><a href="#">Search by the Foundation</a></li>
+							</ul>
+						</aside>
+
+						<aside class="right-off-canvas-menu">
+							<ul class="off-canvas-list">
+								<li><label>Users</label></li>
+								<li><a href="#">Hari Seldon</a></li>
+								<li><a href="#">R. Giskard Reventlov</a></li>
+								<li><a href="#">R. Daneel Olivaw</a></li>
+								<li><a href="#">The Mule</a></li>
+								<li><a href="#">Dors Venabili</a></li>
+								<li><a href="#">Yugo Amaryl</a></li>
+								<li><a href="#">The Mule</a></li>
+								<li><a href="#">Emperor Cleon I</a></li>
+								<li><a href="#">Gaal Dornick</a></li>
+								<li><a href="#">Bel Riose</a></li>
+								<li><a href="#">Salvor Hardin</a></li>
+								<li><a href="#">Bel Riose</a></li>
+							</ul>
+						</aside>
+
+						<section class="main-section">
+							<div class="row">
+								<div class="large-12 columns">
+									<br/>
+									<h4 class="">The Psychohistorians</h4>
+
+									<p>Set in the year 0 F.E. (&quot;Foundation Era&quot;), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p>
+
+									<p>Using psychohistory, Seldon has discovered the declining nature of the Empire, angering the aristocratic members of the Committee of Public Safety, the de facto rulers of the Empire. The Committee considers Seldon&#39;s views and statements treasonous, and he is arrested along with young mathematician Gaal Dornick, who has arrived on Trantor to meet Seldon. Seldon is tried by the Committee and defends his beliefs, explaining his theories and predictions, including his belief that the Empire will collapse in 500 years and enter a 30,000-year dark age, to the Committee&#39;s members.</p>
+
+								</div>
+							</div>
+						</section>
+
+						<a class="exit-off-canvas"></a>
+
+				</div>
+			</div>
+
+			<p>	</div>
+			</div></p>
+			<h3 class="normal" id="tab-bar-container">Container da tab bar</h3>
+
+			<p>O Foundation disponibiliza um elemento simples de nevagação chamado Tab Bar. É um componente básico, pensado para ser facilmente customizável. Primeiro, precisamos adicionar o container Tab Bar: <code>nav.tab-bar</code>.</p>
+
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;nav class="tab-bar"&gt;&lt;/nav&gt;</code></pre>
+
+			<h3 class="normal" id="button-containers">Containers para botões</h3>
+			<p>Os containers para botões, <code>div.left-small</code> e <code>div.right-small</code>, contém os botões de ativação.</p>
+
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;nav class="tab-bar"&gt;
+  &lt;div class="left-small"&gt;&lt;/div&gt;
+  &lt;div class="right-small"&gt;&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+
+			<h3 class="normal" id="menu-icon">Ícone de menu</h3>
+			<p>Para adicionar o ícone de hamburguer quer todo mundo conhece e gosta, adicione a classe <code>.menu-icon</code> no seu trigger, e adicione um <code>span</code> dentro dele.</p>
+			<pre class="margin-bottom"><code class="language-html">&lt;a role="button" href="#" class="right-off-canvas-toggle menu-icon" &gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;</code></pre>
+
+			<p>Agora coloque tudo junto...</p>
+
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;nav class="tab-bar"&gt;
+  &lt;div class="left-small"&gt;
+    &lt;a href="#" role="button" aria-controls="idOfLeftMenu" aria-expanded="false" class="left-off-canvas-toggle menu-icon" &gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class="right-small"&gt;
+    &lt;a href="#" role="button" aria-controls="idOfRightMenu" aria-expanded="false" class="right-off-canvas-toggle menu-icon" &gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+
+			<p>...e este será o resultado:</p>
+
+			<nav class="tab-bar">
+				<div class="left-small">
+					<a href="#idOfLeftMenu" aria-controls="idOfLeftMenu"	role="button" aria-expanded="false" class="menu-icon" ><span></span></a>
+				</div>
+				<div class="right-small">
+					<a href="#idOfRightMenu" aria-controls="idOfRightMenu" role="button" aria-expanded="false" class="menu-icon" ><span></span></a>
+				</div>
+			</nav>
+
+			<p>&nbsp;</p>
+			<h3 class="normal" id="tab-bar-section">Seções da tab bar</h3>
+			<p>A última coisa que precisamos é uma seção para o conteúdo da tab bar. Adicione uma <code>section.tab-bar-section</code> dentro do <code>nav.tab-bar</code>.</p>
+
+			<h4>HTML</h4>
+			<pre class="margin-bottom"><code class="language-html">&lt;nav class="tab-bar"&gt;
+  &lt;div class="left-small"&gt;
+    &lt;a role="button" aria-expanded="false" aria-controls="idOfLeftMenu" class="left-off-canvas-toggle menu-icon" &gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;section class="middle tab-bar-section"&gt;
+    &lt;h1 class="title"&gt;Foundation&lt;/h1&gt;
+  &lt;/section&gt;
+  &lt;div class="right-small"&gt;
+    &lt;a role="button" aria-expanded="false" aria-controls="idOfRightMenu" class="right-off-canvas-toggle menu-icon" &gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+
+			<p>Adicione uma classe <code>.left</code>, <code>.right</code> ou <code>.middle</code> dependendo do espaço que deseja ter a seção ocupando. Por exemplo, se você tem um container de botão à esquerda, deve adicionar a classe <code>.right</code> à seção da tab bar. isso permite que você coloque o conteúdo complementando o espaço restante ao lado dos botões.</p>
+
+			<h4>HTML</h4>
+
+			<pre class="margin-bottom"><code class="language-html">&lt;nav class="tab-bar"&gt;
+  &lt;div class="left-small"&gt;&lt;/div&gt;
+  &lt;div class="right tab-bar-section"&gt;&lt;!-- Eu me estico para preenchar à direita --&gt;&lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;nav class="tab-bar"&gt;
+  &lt;div class="left-small"&gt;&lt;/div&gt;
+  &lt;div class="middle tab-bar-section"&gt;&lt;!-- Eu estou no meio --&gt;&lt;/div&gt;
+  &lt;div class="right-small"&gt;&lt;/div&gt;
+&lt;/nav&gt;
+
+&lt;nav class="tab-bar"&gt;
+  &lt;div class="right tab-bar-section"&gt;&lt;!-- Eu me estico totalmente à direita --&gt;&lt;/div&gt;
+  &lt;div class="right-small"&gt;&lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+
+			<nav class="tab-bar">
+				<div class="right-small"><a class="menu-icon" ><span></span></a></div>
+				<div class="left tab-bar-section"><h1>Seção à esquerda</h1></div>
+			</nav>
+			&nbsp;
+			<nav class="tab-bar">
+				<div class="left-small"><a class="menu-icon" ><span></span></a></div>
+				<section class="middle tab-bar-section"><h1>Seção central</h1></section>
+				<div class="right-small"><a class=" menu-icon" ><span></span></a></div>
+			</nav>
+			&nbsp;
+			<nav class="tab-bar">
+				<section class="right tab-bar-section"><h1>Seção à direita</h1></section>
+				<div class="left-small"><a class="menu-icon"><span></span></a></div>
+			</nav>
+
+			<p>&nbsp;</p>
+			<h3 class="normal" id="off-canvas-list">Listagem no off-canvas</h3>
+			<p>Também está disponível um padrão de lista pré-definido que pode ser utilizado dentro do seu menu off-canvas. Inclua um elemento <code>ul.off-canvas-list</code> dentro do seu menu off-canvas. Para o título das seções do menu, englobe o conteúdo o do seu <code>li</code> dentro de um <code>label</code>.</p>
+			<div class="row">
+				<div class="large-6 columns">
+					<h4>HTML</h4>
+					<pre class="margin-bottom"><code class="language-html">&lt;nav class="left-off-canvas-menu"&gt;
+  &lt;ul class="off-canvas-list"&gt;
+    &lt;li&gt;&lt;label&gt;Foundation&lt;/label&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;The Psychohistorians&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;The Encyclopedists&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;The Mayors&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;The Traders&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#"&gt;The Merchant Princes&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+				</div>
+				<div class="large-6 columns">
+					<h4>HTML renderizado</h4>
+						<ul class="off-canvas-list doc-oc-list">
+							<li><label>Foundation</label></li>
+							<li><a href="#">The Psychohistorians</a></li>
+							<li><a href="#">The Encyclopedists</a></li>
+							<li><a href="#">The Mayors</a></li>
+							<li><a href="#">The Traders</a></li>
+							<li><a href="#">The Merchant Princes</a></li>
+						</ul>
+				</div>
+			</div>
+
+			<p>&nbsp;</p>
+			<h3 class="normal" id="off-canvas-multilevel-menu">Menu off-canvas multi-nível</h3>
+
+			<p>Além de tudo isso, ainda é possível criar menus off-canvas multi-níveis. Adiciona um <code>li.has-submenu</code> e inclua um <code>ul.left-submenu</code> or <code>ul.right-submenu</code>, dentro do início do submenu em questão. Em seguida, adicione um elemento <code>li.back</code> dentro da nova lista. Isso irá possibilitar menus multi-níveis.</p>
 
 			<div class="row">
 				<div class="large-6 columns">
-				<h4>CSS</h4>
-					<pre class="margin-bottom"><code class="language-css">meta.my-mq-custom {
-  font-family: "/only screen and (min-width: 40em)/";
-  width: 40em;
-}</code></pre>
+				<h4>HTML</h4>
+				<pre class="margin-bottom"><code class="language-html">&lt;div class="off-canvas-wrap" data-offcanvas&gt;
+  &lt;div class="inner-wrap"&gt;
+    &lt;nav class="tab-bar"&gt;
+      &lt;section class="left-small"&gt;
+        &lt;a class="left-off-canvas-toggle menu-icon" &gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+      &lt;/section&gt;
+
+      &lt;section class="middle tab-bar-section"&gt;
+        &lt;h1 class="title"&gt;Foundation&lt;/h1&gt;
+      &lt;/section&gt;
+
+      &lt;section class="right-small"&gt;
+        &lt;a class="right-off-canvas-toggle menu-icon" &gt;&lt;span&gt;&lt;/span&gt;&lt;/a&gt;
+      &lt;/section&gt;
+    &lt;/nav&gt;
+
+    &lt;aside class="left-off-canvas-menu"&gt;
+      &lt;ul class="off-canvas-list"&gt;
+        &lt;li&gt;&lt;label&gt;Foundation&lt;/label&gt;&lt;/li&gt;
+        &lt;li class="has-submenu"&gt;&lt;a href="#"&gt;The Psychohistorians&lt;/a&gt;
+            &lt;ul class="left-submenu"&gt;
+                &lt;li class="back"&gt;&lt;a href="#"&gt;Back&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;label&gt;Level 1&lt;/label&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="has-submenu"&gt;&lt;a href="#"&gt;Link 2 w/ submenu&lt;/a&gt;
+                    &lt;ul class="left-submenu"&gt;
+                        &lt;li class="back"&gt;&lt;a href="#"&gt;Back&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;label&gt;Level 2&lt;/label&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;The Encyclopedists&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;The Mayors&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;The Traders&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;The Merchant Princes&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;aside class="right-off-canvas-menu"&gt;
+      &lt;ul class="off-canvas-list"&gt;
+        &lt;li&gt;&lt;label&gt;Users&lt;/label&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Hari Seldon&lt;/a&gt;&lt;/li&gt;
+        &lt;li class="has-submenu"&gt;&lt;a href="#"&gt;R. Giskard Reventlov&lt;/a&gt;
+            &lt;ul class="right-submenu"&gt;
+                &lt;li class="back"&gt;&lt;a href="#"&gt;Back&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;label&gt;Level 1&lt;/label&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+                &lt;li class="has-submenu"&gt;&lt;a href="#"&gt;Link 2 w/ submenu&lt;/a&gt;
+                    &lt;ul class="right-submenu"&gt;
+                        &lt;li class="back"&gt;&lt;a href="#"&gt;Back&lt;/a&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;label&gt;Level 2&lt;/label&gt;&lt;/li&gt;
+                        &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;...&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/aside&gt;
+
+    &lt;section class="main-section"&gt;
+      &lt;!-- content goes here --&gt;
+    &lt;/section&gt;
+
+  &lt;a class="exit-off-canvas"&gt;&lt;/a&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
 				</div>
 				<div class="large-6 columns">
-				<h4>JavaScript</h4>
-					<pre class="margin-bottom"><code class="language-javascript">// Registrando uma media query custom
-Foundation.utils.register_media('custom', 'my-mq-custom');
+				<h4>HTML renderizado</h4>
+				<div class="off-canvas-wrap docs-wrap">
+				<div class="inner-wrap">
+					<nav class="tab-bar">
+						<section class="left-small">
+							<a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+						</section>
 
-// Checando se ela está ativa
-if (matchMedia(Foundation.media_queries['custom']).matches){
-  ...
-};
+						<section class="middle tab-bar-section">
+							<h1 class="title">Foundation</h1>
+						</section>
 
-// Aplicando uma regra CSS customizada à media query
-Foundation.utils.add_custom_rule('.js-generated-element { padding-top: ' + element.data('height') + 'px }', 'custom');</code></pre>
+						<section class="right-small">
+							<a class="right-off-canvas-toggle menu-icon" ><span></span></a>
+						</section>
+					</nav>
+
+					<aside class="left-off-canvas-menu">
+						<ul class="off-canvas-list">
+							<li><label>Foundation</label></li>
+							<li class="has-submenu"><a href="#">The Psychohistorians</a>
+									<ul class="left-submenu">
+											<li class="back"><a href="#">Back</a></li>
+											<li><label>Level 1</label></li>
+											<li><a href="#">Link 1</a></li>
+											<li class="has-submenu"><a href="#">Link 2 w/ submenu</a>
+													<ul class="left-submenu">
+															<li class="back"><a href="#">Back</a></li>
+															<li><label>Level 2</label></li>
+															<li><a href="#">Link 1</a></li>
+															<li><a href="#">Link 2</a></li>
+															<li><a href="#">Link 3</a></li>
+															<li><a href="#">Link 4</a></li>
+													</ul>
+											</li>
+											<li><a href="#">Link 3</a></li>
+											<li><a href="#">Link 4</a></li>
+									</ul>
+							</li>
+							<li><a href="#">The Encyclopedists</a></li>
+							<li><a href="#">The Mayors</a></li>
+							<li><a href="#">The Traders</a></li>
+							<li><a href="#">The Merchant Princes</a></li>
+						</ul>
+					</aside>
+
+					<aside class="right-off-canvas-menu">
+						<ul class="off-canvas-list">
+							<li><label>Users</label></li>
+							<li><a href="#">Hari Seldon</a></li>
+							<li class="has-submenu"><a href="#">R. Giskard Reventlov</a>
+									<ul class="right-submenu">
+											<li class="back"><a href="#">Back</a></li>
+											<li><label>Level 1</label></li>
+											<li><a href="#">Link 1</a></li>
+											<li class="has-submenu"><a href="#">Link 2 w/ submenu</a>
+													<ul class="right-submenu">
+															<li class="back"><a href="#">Back</a></li>
+															<li><label>Level 2</label></li>
+															<li><a href="#">R. Daneel Olivaw</a></li>
+															<li><a href="#">The Mule</a></li>
+															<li><a href="#">Dors Venabili</a></li>
+															<li><a href="#">Yugo Amaryl</a></li>
+															<li><a href="#">The Mule</a></li>
+													</ul>
+											</li>
+											<li><a href="#">Emperor Cleon I</a></li>
+											<li><a href="#">Gaal Dornick</a></li>
+									</ul>
+							</li> 
+							<li><a href="#">Bel Riose</a></li>
+							<li><a href="#">Salvor Hardin</a></li>
+							<li><a href="#">Bel Riose</a></li>
+						</ul>
+					</aside>
+
+					<section class="main-section">
+						<div class="row">
+							<div class="large-12 columns">
+								<br/>
+								<h4 class="">The Psychohistorians</h4>
+
+								<p>Set in the year 0 F.E. (&quot;Foundation Era&quot;), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events.</p>
+
+								<p>Using psychohistory, Seldon has discovered the declining nature of the Empire, angering the aristocratic members of the Committee of Public Safety, the de facto rulers of the Empire. The Committee considers Seldon&#39;s views and statements treasonous, and he is arrested along with young mathematician Gaal Dornick, who has arrived on Trantor to meet Seldon. Seldon is tried by the Committee and defends his beliefs, explaining his theories and predictions, including his belief that the Empire will collapse in 500 years and enter a 30,000-year dark age, to the Committee&#39;s members.</p>
+
+							</div>
+						</div>
+					</section>
+
+				<a class="exit-off-canvas"></a>
+
+				</div>
+			</div>
 				</div>
 			</div>
 
-			<p><h4>Assinatura do método</h4></p>
+			<hr class="large">
+			<h2 class="normal" id="accessibility">Acessibilidade</h2>
 
-			<pre class="margin-bottom"><code class="language-javascript">// Argumentos:
-//    Media (String): String chave para o armazenamento da media query em 
-//    Foundation.media_queries
-//
-//    Class (String): Nome para a meta-tag gerada
+			<p>O menu off-canvas ainda não tem acessibilidade total. Devido ao fato de ele estar empurrado para fora da tela, o navegador ainda vai acessá-lo no ciclo de TABs, e leitores de tela irão ler cada item da navegação. Apesar disso, ele não irá aparecer na tela quando focado com o teclado.</p>
+			
+			<p>Se a pagina tem 2 navegações primárias, por exemplo um menu horizontal no topo para telas grandes e um off-canvas para telas menores, o melhor seria esconder um dos dois dos leitores de tela, para que somente um fizesse parte do ciclo. Adicione o atributo <code>aria-hidden=&quot;true&quot;</code> ao container de uma das navegações, o que irá informar aos dispositivos assistivos para ignorá-lo completamente.</p>
 
-register_media(media, class) { ... }
-
-// Arguments:
-//    Rule (String): Regra CSS a ser adicionada ao documento.
-//
-//    Media (String): Media query opcional para a regra ser aplicada.
-
-add_custom_rule(rule, media) { ... }</code></pre>
+			<p>O menu off-canvas multi-níveis, uma adição recente ao Foundation, também ainda não possui acessibilidade total. O navegador irá passar pelos itens do topo do menu, mas não vai entrar dentro dos submenus.</p>
 
 			<hr class="large">
 
-			<h3 class="normal" id="image-loaded">Image Loaded</h3>
+			<h2 class="normal" id="using-the-javascript">Utilizando o JavaScript</h2>
 
-			<p>Enquanto vincular ao evento document.ready normalmente é o suficiente para plugins que manipulam o DOM, há situações em que você precisa de TODO o conteúdo do site carregado antes de começar a calcular informações como o tamanho de elementos. Isso é importante principlamente com imagens, que podem demorar um pouco para carregar e alterar o layout de uma págian significamente, dependendo do seu tamanho.</p>
+			<div class="panel">
+				Antes de você utilizar o off-canvas você deve verificar se o jQuery e o <code>foundation.js</code> estão disponíveis em sua página. Você pode dar uma olhada na <a href="../javascript.html">documentação do JavaScript</a> para fazer essas configurações.
+			</div>
 
-			<p>Isso pode ser evitado utilizando-se o método <code>image_loaded</code>, que permite que você execute um callback quando uma imagem tenha terminado completamente de carregar. Passando-se como parâmetro um seletor jQuery que corresponda a várias imagens irá fazer com o que o callback seja executado somente quando todas tiverem carregado.</p>
-			
-			<p><h4>Exemplo</h4></p>
+			<p>Simplesmente adicione o <code>foundation.offcanvas.js</code> DEPOIS do arquivo <code>foundation.js</code> (ou utilize somente o <code>foundation.min.js</code>, que já contem todos os plugins).  Seu markup ficará parecido com isso:</p>
+			<pre class="margin-bottom"><code class="language-html">&lt;body&gt;
 
-			<pre class="margin-bottom"><code class="language-javascript">Foundation.utils.image_loaded($('img.wait-for-me'), function(){
-  console.log('Image Loaded! :)');
+  ...
+
+  &lt;script src="js/foundation/foundation.js"&gt;&lt;/script&gt;
+  &lt;script src="js/foundation/foundation.offcanvas.js"&gt;&lt;/script&gt;
+  &lt;!-- Outros plugins JS podem ser colocados aqui --&gt;
+
+  &lt;script&gt;
+    $(document).foundation();
+  &lt;/script&gt;
+
+&lt;/body&gt;</code></pre>
+
+
+			<p>Biblioteca do Foundation necessária: <code>foundation.offcanvas.js</code></p>
+
+			<hr class="large">
+
+			<h3 class="normal" id="optional-javascript-configuration">Configuração opcional do JavaScript</h3>
+
+			<p><strong>open_method</strong> <br> Default: <code>move</code> <br> Define como o off-canvas se comporta quando aberto. Pode ser <code>move</code>, <code>overlap_single</code> or <code>overlap</code>.</p>
+			<p><strong>close_on_click</strong> <br/> Default: <code>false</code> <br> Controla se o menu deve se fechar sozinho ou não quando o usuário clicar em um de seus links.</p>
+			<pre class="margin-bottom"><code class="language-javascript">$(document).foundation({
+  offcanvas : {
+    // Setá o método de abertura do off-canvas.
+    // [ move | overlap_single | overlap ]
+    open_method: 'move', 
+    // O menu deve se fechar quando um link é clicado?
+    // [ true | false ]
+    close_on_click : false
+  }
 });</code></pre>
 
-			<p><h4>Assinatura do método</h4></p>
-			<pre class="margin-bottom"><code class="language-javascript">// Argumentos:
-//    Image (jQuery Object): Imagem(ns) para se checar o carregamento.
-//
-//    Callback (Function): Função a ser executada quanto tudo estiver carregado.
+			<hr class="large">
 
-image_loaded(image, callback) { ... }</code></pre>
+			<h3 class="normal" id="event-bindings">Vinculo de eventos <small>(Event binding)</small></h3>
+
+			<p>Há uma série de eventos a quais você pode vincular para disparar callbacks:</p>
+
+			<pre class="margin-bottom"><code class="language-js">$(document).on('open.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});
+
+$(document).on('close.fndtn.offcanvas', '[data-offcanvas]', function () {
+  var off_canvas_wrap = $(this);
+});</code></pre>
+			<p>Por exemplo, para travar o scroll quando o menu estiver ativo:</p>
+			<pre class="margin-bottom"><code class="language-js">$(document)
+.on('open.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'hidden');
+})
+.on('close.fndtn.offcanvas', '[data-offcanvas]', function() {
+  $('html').css('overflow', 'auto');
+})</code></pre>
+			<h3 class="normal" id="programmatic-show-hide-toggle">Show / hide / toggle programático</h3>
+			<p>O container <code>.off-canvas-wrap</code> pode ser referenciado para utilização de métodos JavaScript. No momento, a classe uma classe de movimentação precisa ser incluída: pode ser <code>move-right</code>, <code>move-left</code>, <code>offcanvas-overlap-left</code>, <code>offcanvas-overlap-right</code> ou <code>offcanvas-overlap</code>.</p>
+			<pre class="margin-bottom"><code class="language-js">$('.off-canvas-wrap').foundation('offcanvas', 'show', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'hide', 'move-right');
+$('.off-canvas-wrap').foundation('offcanvas', 'toggle', 'move-right');</code></pre>
+			<hr class="large">
+			<h3 class="normal" id="adding-off-canvas-after-page-load">Adicionando um off-canvas depois da página já carregada</h3>
+			<p>Se você precisar adicionar um off-canvas depois da página já ser sido carregada, você vai precisar reiniciar o foundation da seguinte forma:</p>
+			<pre class="margin-bottom"><code class="language-javascript">$(document).foundation();</code></pre>
+
+
+			<p>Ou, no caso, você pode especificar o tipo de componente que deseja reinicializar utilizando o reflow:</p>
+			<pre class="margin-bottom"><code class="language-javascript">$(document).foundation('offcanvas', 'reflow');</code></pre>
 
 			<hr class="large">
 
-			<h3 class="normal" id="random">Random String</h3>
-
-			<p>O método <code>random_str</code> é um auxílio para criação de strings randômicas de um tamanho definido. Este método é usado por alguns plugins do Foundation para uma considerável probabilidade de não haver colisão entre IDs de elementos criados sob demanda. Note que <code>random_str</code> não deve ser considerada criptograficamente segura.</p>
-
-			<p><h4>Exemplo</h4></p>
-
-			<pre class="margin-bottom"><code class="language-javascript">>> Foundation.utils.random_str(6);
-"P47PGD"
->> Foundation.utils.random_str(6);
-"JvuXFc"
->> Foundation.utils.random_str(6);
-"XOxB7j"</code></pre>
-
-			<p><h4>Assinatura do método</h4></p>
-
-			<pre class="margin-bottom"><code class="language-javascript">// Argumentos:
-//    Length (Integer): Tamanho da string a ser gerada. O padrão é um integer
-//    randômico.
-//
-// Retorna:
-//    Rand (String): String alfabética pseudo-randômica.
-
-random_str(length) { ... }</code></pre>
-			
-			<hr class="large">
-
-			<?= linkDocumentacaoOficial(array('append' => 'docs/utility-classes.html')) ?>
+			<?= linkDocumentacaoOficial(array('append' => 'docs/components/offcanvas.html')) ?>
 
 			<script>
 				document.addEventListener('DOMContentLoaded', function() {
-					activeNav('docs-utilitarios-javascript');
+					activeNav('docs-componentes-offcanvas');
 					activeNav('documentacao');
 				}, false);
 			</script>

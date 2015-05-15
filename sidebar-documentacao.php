@@ -14,12 +14,13 @@
 			<li class="menu-docs-componentes-grid"><a href="docs/componentes/grid.html">Grid</a></li>
 			<li class="menu-docs-componentes-block-grid"><a href="docs/componentes/block-grid.html" class="uf-addon">Block Grid</a></li>
 			<li class="menu-docs-classes-utilitarias"><a href="docs/classes-utilitarias.html" class="uf-addon">Classes Utilitárias</a></li>
-			<li class="menu-docs-utilitarios-javascript"><a href="docs/utilitarios-javascript.html" class="uf-addon">Utilitários JavaScript</a></li>
+			<li class="menu-docs-utilitarios-javascript"><a href="docs/utilitarios-javascript.html">Utilitários JavaScript</a></li>
 
 			<li class="divider"></li>
 
 			<li class="heading">Navegação</li>
 			<li class="menu-docs-componentes-offcanvas"><a href="docs/componentes/offcanvas.html">Off-canvas <span class="label secondary radius">JS</span></a></li>
+			<li class="menu-docs-componentes-topbar"><a href="docs/componentes/topbar.html">Top Bar <span class="label secondary radius">JS</span></a></li>
 
 		</ul>
 
